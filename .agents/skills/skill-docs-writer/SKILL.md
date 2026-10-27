@@ -4,6 +4,7 @@ description: Create, improve, and maintain human-facing documentation for AI age
 metadata:
   author: trevor-nichols
   version: "1.0.0"
+  internal: true
 ---
 
 # Skill Docs Writer
