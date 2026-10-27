@@ -1,6 +1,8 @@
 ---
 name: git-commit-writing
 description: Draft professional git commit summaries and descriptions and perform the commit. Use when asked to write, improve, or standardize commit messages, or to commit worktree changes. Always analyze both staged and unstaged diffs, stage all changes, and commit without asking follow-up questions. Uses a Conventional Commits summary and a structured body (Why / What changed / Impact / Tests / Notes / Refs) for non-trivial changes, with a minimal format only for tiny edits.
+metadata:
+  version: "1.0.0"
 ---
 
 # Git Commit Writing

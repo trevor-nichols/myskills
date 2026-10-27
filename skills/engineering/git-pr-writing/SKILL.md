@@ -1,6 +1,8 @@
 ---
 name: git-pr-writing
 description: Draft a professional Pull Request (PR) title and description from the current branch’s changes vs the base branch (default - repo default branch, usually main), then create or update the GitHub PR by default. Use when asked to write, improve, standardize, or generate a PR description, or to create/update a PR. Always compute the merge-base against upstream default branch, summarize changes, include testing instructions/status, and call out risks/rollout/migrations when relevant. Do not ask follow-up questions.
+metadata:
+  version: "1.0.0"
 ---
 
 # Git PR Writing

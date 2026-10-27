@@ -2,7 +2,7 @@
 name: skill-docs-writer
 description: Create, improve, and maintain human-facing documentation for AI agent skills. Use when a SKILL.md is added, changed, renamed, moved, or retired; when publishing a skills collection; or when someone asks for a clear explanation of a skill and when to use it. Write documentation pages grounded in the actual skill, not copies of its internal instructions.
 metadata:
-  author: AgenAI
+  author: trevor-nichols
   version: "1.0.0"
 ---
 
