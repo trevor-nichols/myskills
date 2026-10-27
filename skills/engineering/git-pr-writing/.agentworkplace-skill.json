@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "skillId": "git-pr-writing",
+  "skillName": "git-pr-writing",
+  "slug": "git-pr-writing",
+  "source": "local",
+  "version": "1.0.0",
+  "packageUrl": null,
+  "packageSha256": null,
+  "installedAt": "2026-03-13T02:31:16.848732+00:00"
+}

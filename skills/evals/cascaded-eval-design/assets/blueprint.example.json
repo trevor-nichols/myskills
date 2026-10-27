@@ -1,0 +1,71 @@
+{
+  "id": "synthetic-security-release-triage",
+  "title": "Security advisory and live deployment scope",
+  "domain": "software security",
+  "profile": "expert",
+  "provenance": "Illustrative synthetic example; not an independently validated benchmark",
+  "decisions": [
+    {
+      "id": "DP1",
+      "qualified": true,
+      "question": "Which record determines the artifact actually running in each environment?",
+      "candidate_paths": ["Use human release tags", "Use signed deployment audit and digest"],
+      "decisive_evidence": "Signed deployment audit supersedes stale release tags",
+      "intended_state": "Map environments to deployed digests"
+    },
+    {
+      "id": "DP2",
+      "qualified": true,
+      "question": "Which live artifacts contain the advisory-matched version?",
+      "candidate_paths": ["Treat all artifacts as affected", "Match dependency version for running digests"],
+      "decisive_evidence": "Release-specific dependency manifest and advisory version range",
+      "intended_state": "Select candidate deployed artifacts"
+    },
+    {
+      "id": "DP3",
+      "qualified": true,
+      "question": "Which candidate environments are actually reachable through untrusted ingress?",
+      "candidate_paths": ["Component presence implies exposure", "Apply runtime reachability evidence"],
+      "decisive_evidence": "Runtime call graph and ingress routing",
+      "intended_state": "Select exposed deployment environments"
+    },
+    {
+      "id": "DP4",
+      "qualified": true,
+      "question": "Is rollback compatible with the deployed schema migration?",
+      "candidate_paths": ["Rollback to old release", "Build a forward compatible patch"],
+      "decisive_evidence": "Irreversible schema migration documented for current database",
+      "intended_state": "Choose compatible mitigation"
+    },
+    {
+      "id": "DP5",
+      "qualified": true,
+      "question": "Which verification targets are required for the actual chosen mitigation?",
+      "candidate_paths": ["Validate only production web deployment", "Validate every changed deployment and invariant"],
+      "decisive_evidence": "Deployed digest audit and verified mitigation scope",
+      "intended_state": "Verify patched web-prod and canary; leave other services unchanged"
+    }
+  ],
+  "edges": [
+    {"from": "DP1", "to": "DP2", "kind": "substantive", "reason": "Running digest determines which dependency manifest applies"},
+    {"from": "DP2", "to": "DP3", "kind": "substantive", "reason": "Only advisory-matched binaries enter reachability analysis"},
+    {"from": "DP3", "to": "DP4", "kind": "substantive", "reason": "Exposed environment population defines applicable mitigation scope"},
+    {"from": "DP4", "to": "DP5", "kind": "substantive", "reason": "Forward-patch choice changes required verification tests"}
+  ],
+  "terminal_outputs": [
+    "exposed environments with exact IDs",
+    "compatible mitigation",
+    "verified patched deployments",
+    "unaffected environment invariant"
+  ],
+  "ablations": [
+    {"id": "A1", "first_wrong_dp": "DP1", "status": "planned", "terminal_difference": "stale canary missed"},
+    {"id": "A2", "first_wrong_dp": "DP3", "status": "planned", "terminal_difference": "admin environment incorrectly classified exposed"},
+    {"id": "A3", "first_wrong_dp": "DP4", "status": "planned", "terminal_difference": "rollback incompatible with schema"}
+  ],
+  "verification": {
+    "source_verified": false,
+    "gold_verified": false,
+    "empirically_validated": false
+  }
+}
